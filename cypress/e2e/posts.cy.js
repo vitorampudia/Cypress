@@ -1,5 +1,4 @@
 describe("Gerenciamento de posts", () => {
-  // Exemplo de GET da Aula 14, slide 13.
   it("Dado que existem posts cadastrados, quando eu consultar /posts, então devem ser retornados 100 posts com os campos obrigatórios", () => {
     cy.request("/posts").then((res) => {
       expect(res.status).to.eq(200);
@@ -8,7 +7,6 @@ describe("Gerenciamento de posts", () => {
     });
   });
 
-  // Exemplo de cenário BDD da Aula 14, slide 6.
   it("Dado um novo post, quando eu enviar um POST, então ele deve ser criado", () => {
     const novoPost = { title: "Meu post", body: "Teste", userId: 1 };
 
@@ -19,7 +17,6 @@ describe("Gerenciamento de posts", () => {
     });
   });
 
-  // Exemplo de POST da Aula 14, slide 14.
   it("Dado que eu tenho os dados de um novo post, quando eu enviar um POST para /posts, então o post deve ser criado com id 101", () => {
     const novoPost = {
       title: "Meu post de teste",
@@ -34,7 +31,6 @@ describe("Gerenciamento de posts", () => {
     });
   });
 
-  // Exemplo de PUT da Aula 14, slide 15.
   it("Dado que eu tenho os dados completos do post 1, quando eu enviar um PUT para /posts/1, então o post deve ser substituído", () => {
     const postAtualizado = {
       id: 1,
@@ -49,7 +45,6 @@ describe("Gerenciamento de posts", () => {
     });
   });
 
-  // Exemplo de DELETE da Aula 14, slide 16.
   it("Dado que o post 1 existe, quando eu enviar um DELETE para /posts/1, então deve ser retornado status 200 com corpo vazio", () => {
     cy.request("DELETE", "/posts/1").then((res) => {
       expect(res.status).to.eq(200);
@@ -57,7 +52,6 @@ describe("Gerenciamento de posts", () => {
     });
   });
 
-  // Cenários propostos na Aula 14, slide 17.
   it("Dado que o ID zero não identifica um post, quando eu consultar /posts/0, então deve retornar status 404", () => {
     cy.request({
       url: "/posts/0",
@@ -119,7 +113,6 @@ describe("Gerenciamento de posts", () => {
     });
   });
 
-  // Cenários adicionais de posts.
   it("Dado que o post 1 existe, quando eu consultar /posts/1, então devem ser retornados o post e seus campos obrigatórios", () => {
     cy.request("/posts/1").then((res) => {
       expect(res.status).to.eq(200);
